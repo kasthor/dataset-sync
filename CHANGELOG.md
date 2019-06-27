@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/kasthor/dataset-sync/compare/v1.1.0...v1.2.0) (2019-06-27)
+
+
+### Features
+
+* allow to send client with custom options ([b2de513](https://github.com/kasthor/dataset-sync/commit/b2de513))
+
+
+
 ## [1.1.0](https://github.com/kasthor/dataset-sync/compare/v1.0.0...v1.1.0) (2019-06-27)
 
 
