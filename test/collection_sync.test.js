@@ -63,6 +63,17 @@ describe('CollectionSync', () => {
       expect(CollectionSync.getUpdates(source, mirror)).resolves.not.toContain('c');
     });
   });
+  describe('filter', () => {
+    it('returns true if element match', () => {
+      expect(CollectionSync.filter({ a: '1' }, { a: '1' })).toBeTrue();
+    });
+    it('returns false if element does not match', () => {
+      expect(CollectionSync.filter({ a: '1' }, { b: '1' })).toBeFalse();
+    });
+    it('returns true if element match but has more values', () => {
+      expect(CollectionSync.filter({ a: '1' }, { a: '1', b: '2' })).toBeTrue();
+    });
+  });
   describe('sync', () => {
     it('add to mirror the items that are in source but not in mirror', () => {
       const subject = new CollectionSync(new Item({ client: { a: 1, b: 2 } }),
