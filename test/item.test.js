@@ -64,4 +64,53 @@ describe('Item', () => {
       });
     });
   });
+
+  describe('cannot read', () => {
+    let subject;
+    beforeEach(() => {
+      subject = new Item({ client: { a: 1, b: 2 }, read: false });
+    });
+    describe('get', () => {
+      it('rejects', () => {
+        expect(subject.get('a')).toReject();
+      });
+    });
+    describe('keys', () => {
+      it('rejects', () => {
+        expect(subject.keys()).toReject();
+      });
+    });
+    describe('keyValues', () => {
+      it('rejects', () => {
+        expect(subject.keyValues()).toReject();
+      });
+    });
+    describe('keysChecksum', () => {
+      it('rejects', () => {
+        expect(subject.keysChecksum()).toReject();
+      });
+    });
+    describe('valuesChecksum', () => {
+      it('rejects', () => {
+        expect(subject.valuesChecksum()).toReject();
+      });
+    });
+  });
+
+  describe('cannot write', () => {
+    let subject;
+    beforeEach(() => {
+      subject = new Item({ client: { a: 1, b: 2 }, write: false });
+    });
+    describe('set', () => {
+      it('rejects', () => {
+        expect(subject.set('a', 2)).toReject();
+      });
+    });
+    describe('remove', () => {
+      it('rejects', () => {
+        expect(subject.remove('a')).toReject();
+      });
+    });
+  });
 });

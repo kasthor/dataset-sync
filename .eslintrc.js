@@ -13,6 +13,7 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
-    "one-var": ["error", "consecutive"]
+    "one-var": ["error", "consecutive"],
+    "no-underscore-dangle": "off",
   },
 };
