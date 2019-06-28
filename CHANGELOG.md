@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.9](https://github.com/kasthor/dataset-sync/compare/v1.2.8...v1.2.9) (2019-06-28)
+
+
+### Bug Fixes
+
+* properly recognize Mongo connection ([fb9678b](https://github.com/kasthor/dataset-sync/commit/fb9678b))
+
+
+
 ### [1.2.8](https://github.com/kasthor/dataset-sync/compare/v1.2.7...v1.2.8) (2019-06-28)
 
 
