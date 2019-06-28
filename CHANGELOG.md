@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/kasthor/dataset-sync/compare/v1.2.2...v1.2.3) (2019-06-28)
+
+
+### Bug Fixes
+
+* compatibility with node 6 ([3058d6b](https://github.com/kasthor/dataset-sync/commit/3058d6b))
+
+
+
 ### [1.2.2](https://github.com/kasthor/dataset-sync/compare/v1.2.1...v1.2.2) (2019-06-28)
 
 
