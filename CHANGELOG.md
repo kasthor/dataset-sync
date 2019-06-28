@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/kasthor/dataset-sync/compare/v1.2.10...v1.3.0) (2019-06-28)
+
+
+### Features
+
+* specify client type explicitly ([eeb80c7](https://github.com/kasthor/dataset-sync/commit/eeb80c7))
+
+
+
 ### [1.2.10](https://github.com/kasthor/dataset-sync/compare/v1.2.9...v1.2.10) (2019-06-28)
 
 
