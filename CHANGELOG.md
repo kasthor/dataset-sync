@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.4](https://github.com/kasthor/dataset-sync/compare/v1.3.3...v1.3.4) (2019-06-29)
+
+
+### Bug Fixes
+
+* findOne with Object Id ([a13c83d](https://github.com/kasthor/dataset-sync/commit/a13c83d))
+
+
+
 ### [1.3.3](https://github.com/kasthor/dataset-sync/compare/v1.3.2...v1.3.3) (2019-06-29)
 
 
