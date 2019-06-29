@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://github.com/kasthor/dataset-sync/compare/v1.3.2...v1.3.3) (2019-06-29)
+
+
+### Bug Fixes
+
+* convert mongo response array to key-value pair object ([ce2cc78](https://github.com/kasthor/dataset-sync/commit/ce2cc78))
+
+
+
 ### [1.3.2](https://github.com/kasthor/dataset-sync/compare/v1.3.1...v1.3.2) (2019-06-29)
 
 
