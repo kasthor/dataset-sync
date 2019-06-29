@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/kasthor/dataset-sync/compare/v1.3.4...v1.4.0) (2019-06-29)
+
+
+### Bug Fixes
+
+* ensure key is ObjectId for set, and string when read ([91d89ce](https://github.com/kasthor/dataset-sync/commit/91d89ce))
+
+
+### Features
+
+* use object-hash to generate checksums ([05a9f22](https://github.com/kasthor/dataset-sync/commit/05a9f22))
+
+
+
 ### [1.3.4](https://github.com/kasthor/dataset-sync/compare/v1.3.3...v1.3.4) (2019-06-29)
 
 
