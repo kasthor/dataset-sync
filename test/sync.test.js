@@ -1,6 +1,6 @@
 /* global beforeEach describe it expect */
 
-const Sync = require('../lib/sync.js');
+const Sync = require('../dataset-sync/sync.js');
 
 describe('sync', () => {
   describe('constructor', () => {

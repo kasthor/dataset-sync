@@ -2,10 +2,10 @@
 
 const { MongoClient } = require('mongodb'),
   { RedisClient } = require('redis'),
-  ItemFactory = require('../lib/item_factory'),
-  Item = require('../lib/item'),
-  RedisItem = require('../lib/redis_item'),
-  MongoItem = require('../lib/mongo_item');
+  ItemFactory = require('../dataset-sync/item_factory'),
+  Item = require('../dataset-sync/item'),
+  RedisItem = require('../dataset-sync/redis_item'),
+  MongoItem = require('../dataset-sync/mongo_item');
 
 describe('Items Factory', () => {
   describe('create', () => {

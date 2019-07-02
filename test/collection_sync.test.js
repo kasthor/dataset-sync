@@ -1,7 +1,7 @@
 /* global describe it expect */
 
-const CollectionSync = require('../lib/collection_sync.js'),
-  Item = require('../lib/item.js');
+const CollectionSync = require('../dataset-sync/collection_sync.js'),
+  Item = require('../dataset-sync/item.js');
 
 describe('CollectionSync', () => {
   describe('constructor', () => {

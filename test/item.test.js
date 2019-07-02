@@ -1,6 +1,6 @@
 /* global beforeEach describe it expect */
 
-const Item = require('../lib/item.js');
+const Item = require('../dataset-sync/item.js');
 
 describe('Item', () => {
   describe('constructor', () => {
