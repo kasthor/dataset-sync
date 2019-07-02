@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/kasthor/dataset-sync/compare/v1.4.1...v1.4.2) (2019-07-02)
+
+
+### Bug Fixes
+
+* use parsed objects on checksum ([46d2798](https://github.com/kasthor/dataset-sync/commit/46d2798))
+* using custom version of node-object-hash ([2cefd76](https://github.com/kasthor/dataset-sync/commit/2cefd76))
+
+
+
 ### [1.4.1](https://github.com/kasthor/dataset-sync/compare/v1.4.0...v1.4.1) (2019-07-02)
 
 
