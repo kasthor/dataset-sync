@@ -1,4 +1,5 @@
-const hash = require('object-hash');
+const Noh = require('node-object-hash'),
+  { hash } = Noh({ sort: true, coerce: true });
 
 class Item {
   static checksum(obj) {
