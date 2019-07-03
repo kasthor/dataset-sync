@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/kasthor/dataset-sync/compare/v1.4.2...v1.4.3) (2019-07-03)
+
+
+### Bug Fixes
+
+* when collection doesn't exists replace with empty object ([9ef0916](https://github.com/kasthor/dataset-sync/commit/9ef0916))
+
+
+
 ### [1.4.2](https://github.com/kasthor/dataset-sync/compare/v1.4.1...v1.4.2) (2019-07-02)
 
 
