@@ -22,7 +22,7 @@ class RedisItem extends Item {
 
   _keyValues() {
     return this.do('hgetall').then(keyValues => Object.assign({},
-      ...Object.keys(keyValues).map(key => ({ [key]: JSON.parse(keyValues[key]) }))));
+      ...Object.keys(keyValues || {}).map(key => ({ [key]: JSON.parse(keyValues[key]) }))));
   }
 
   _set(key, value) {
