@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/kasthor/dataset-sync/compare/v1.4.3...v1.5.0) (2020-02-27)
+
+
+### Features
+
+* use source as a fail over on get ([c12d5a7](https://github.com/kasthor/dataset-sync/commit/c12d5a7))
+
+
+
 ### [1.4.3](https://github.com/kasthor/dataset-sync/compare/v1.4.2...v1.4.3) (2019-07-03)
 
 
