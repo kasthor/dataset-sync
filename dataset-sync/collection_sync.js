@@ -41,13 +41,21 @@ class CollectionSync {
   }
 
   mirror(filter = null) {
+    // TODO: test failOverSource
+    const failOverSource = !! filter.failOverSource;
+    delete filter.failOverSource;
+
     const mirrors = this.filteredMirrors(filter);
 
-    return mirrors[Math.floor(Math.random() * mirrors.length)];
+    if( failOverSource && mirrors.length <= 0 ) {
+      return this.source;
+    } else {
+      return mirrors[Math.floor(Math.random() * mirrors.length)];
+    }
   }
 
   get(key) {
-    return this.mirror({ read: true }).get(key);
+    return this.mirror({ read: true, failOverSource: true }).get(key);
   }
 
   sync() {
