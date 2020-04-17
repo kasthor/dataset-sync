@@ -40,18 +40,16 @@ class CollectionSync {
       : this.mirrors;
   }
 
-  mirror(filter = null) {
+  mirror(options = {}) {
     // TODO: test failOverSource
-    const failOverSource = !! filter.failOverSource;
-    delete filter.failOverSource;
+    const { failOverSource, ...filter } = options,
+      mirrors = this.filteredMirrors(filter);
 
-    const mirrors = this.filteredMirrors(filter);
-
-    if( failOverSource && mirrors.length <= 0 ) {
+    if (failOverSource && mirrors.length <= 0) {
       return this.source;
-    } else {
-      return mirrors[Math.floor(Math.random() * mirrors.length)];
     }
+
+    return mirrors[Math.floor(Math.random() * mirrors.length)];
   }
 
   get(key) {

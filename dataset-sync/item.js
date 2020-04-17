@@ -6,11 +6,9 @@ class Item {
     return hash(obj);
   }
 
-  /*
   static rejectRead() {
     return Promise.reject(new Error('Attempting to read, but reads are not allowed'));
   }
-  */
 
   static rejectWrite() {
     return Promise.reject(new Error('Attemting to write, but writes are not allowed'));
@@ -24,7 +22,7 @@ class Item {
   }
 
   get(key) {
-    // if (!this.read) return Item.rejectRead();
+    if (!this.read) return Item.rejectRead();
 
     return this._get(key);
   }
@@ -34,7 +32,7 @@ class Item {
   }
 
   keys() {
-    // if (!this.read) return Item.rejectRead();
+    if (!this.read) return Item.rejectRead();
 
     return this._keys();
   }
@@ -44,7 +42,7 @@ class Item {
   }
 
   keyValues() {
-    // if (!this.read) return Item.rejectRead();
+    if (!this.read) return Item.rejectRead();
 
     return this._keyValues();
   }

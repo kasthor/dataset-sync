@@ -23,11 +23,13 @@ describe('Items Factory', () => {
     it('returns item', () => {
       expect(ItemFactory.itemType({})).toBe(Item);
     });
-    it('returns MongoItem', () => {
-      expect(ItemFactory.itemType(new RedisClient())).toBe(RedisItem);
+    it('returns RedisItem', () => {
+      const client = new RedisClient();
+      expect(ItemFactory.itemType({ client })).toBe(RedisItem);
     });
     it('returns MongoItem', () => {
-      expect(ItemFactory.itemType(new MongoClient())).toBe(MongoItem);
+      const client = new MongoClient();
+      expect(ItemFactory.itemType({ client })).toBe(MongoItem);
     });
   });
 });

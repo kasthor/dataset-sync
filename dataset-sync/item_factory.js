@@ -1,5 +1,4 @@
-const { RedisClient } = require('redis'),
-  RedisItem = require('./redis_item'),
+const RedisItem = require('./redis_item'),
   MongoItem = require('./mongo_item'),
   Item = require('./item');
 
@@ -14,10 +13,12 @@ class ItemFactory {
   }
 
   static itemType(spec) {
-    if (spec.client instanceof RedisClient || spec.type === 'redis') {
+    const clientClass = spec.client && spec.client.constructor && spec.client.constructor.name;
+
+    if (clientClass === 'RedisClient' || spec.type === 'redis') {
       return RedisItem;
     }
-    if (spec.type === 'mongo') {
+    if (clientClass === 'MongoClient' || spec.type === 'mongo') {
       return MongoItem;
     }
     return Item;
