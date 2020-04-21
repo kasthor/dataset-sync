@@ -1,1 +1,1 @@
-module.exports = require('./dataset-sync/sync')
+module.exports = require('./dataset-sync/sync');
