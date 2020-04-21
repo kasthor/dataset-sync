@@ -13,7 +13,9 @@ class MongoItem extends Item {
   }
 
   _get(key) {
-    return this.collection.findOne({ _id: ObjectId(key) });
+    return this.collection
+      .findOne({ _id: ObjectId(key) })
+      .then(Item.notFoundErrorIfNull);
   }
 
   _keys() {

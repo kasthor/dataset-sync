@@ -17,7 +17,9 @@ describe('RedisItem', () => {
   });
 
   describe('get', () => {
-    it('calls the redis module and returns the value', () => {
+    expect.assertions(1);
+
+    it('calls the redis module and rejects if null value', () => {
       expect(subject.get('not_existing_key')).rejects.toThrow();
     });
   });

@@ -1,5 +1,7 @@
 const Noh = require('node-object-hash'),
+  KeyNotFoundError = require('./key_not_found_error'),
   { hash } = Noh({ sort: true, coerce: true });
+
 
 class Item {
   static checksum(obj) {
@@ -12,6 +14,14 @@ class Item {
 
   static rejectWrite() {
     return Promise.reject(new Error('Attemting to write, but writes are not allowed'));
+  }
+
+  static notFoundErrorIfNull(item) {
+    if (item == null) {
+      throw (new KeyNotFoundError());
+    }
+
+    return item;
   }
 
   constructor(options = {}) {
@@ -28,6 +38,9 @@ class Item {
   }
 
   _get(key) {
+    if (!(key in this.obj)) {
+      return Promise.reject(new KeyNotFoundError());
+    }
     return Promise.resolve(this.obj[key]);
   }
 
