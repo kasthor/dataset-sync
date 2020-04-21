@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/kasthor/dataset-sync/compare/v1.5.0...v1.6.0) (2020-04-21)
+
+
+### Bug Fixes
+
+* tests green ([ccc7376](https://github.com/kasthor/dataset-sync/commit/ccc7376))
+
+
+### Features
+
+* if item not found in mirror it asks source ([c12a16d](https://github.com/kasthor/dataset-sync/commit/c12a16d))
+* mongo rejects if null found ([73b1710](https://github.com/kasthor/dataset-sync/commit/73b1710))
+* when item not found in redis it throws an exception ([aa1d01d](https://github.com/kasthor/dataset-sync/commit/aa1d01d))
+
+
+
 ## [1.5.0](https://github.com/kasthor/dataset-sync/compare/v1.4.3...v1.5.0) (2020-02-27)
 
 
