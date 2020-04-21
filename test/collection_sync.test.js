@@ -1,4 +1,4 @@
-/* global describe it expect */
+/* global beforeEach describe it expect */
 
 const CollectionSync = require('../dataset-sync/collection_sync.js'),
   Item = require('../dataset-sync/item.js');
@@ -72,6 +72,26 @@ describe('CollectionSync', () => {
     });
     it('returns true if element match but has more values', () => {
       expect(CollectionSync.filter({ a: '1' }, { a: '1', b: '2' })).toBeTrue();
+    });
+  });
+  describe('get', () => {
+    let source,
+      mirror,
+      subject;
+
+    beforeEach(() => {
+      source = new Item({ client: { a: 1, b: 1, c: 1 } });
+      mirror = new Item({ client: { a: 1, b: 2 } });
+      subject = new CollectionSync(source, mirror);
+    });
+    it('gets an existing value', () => {
+      expect(subject.get('a')).resolves.toEqual(1);
+    });
+    it('rejects when there is no value', () => {
+      expect(subject.get('z')).toReject();
+    });
+    it('returns value from source if not present in mirror', () => {
+      expect(subject.get('c')).resolves.toEqual(1);
     });
   });
   describe('sync', () => {

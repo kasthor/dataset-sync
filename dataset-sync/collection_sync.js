@@ -1,3 +1,6 @@
+const KeyNotFoundError = require('./key_not_found_error');
+
+
 class CollectionSync {
   static getUpdates(source, mirror) {
     return new Promise((resolve) => {
@@ -53,7 +56,16 @@ class CollectionSync {
   }
 
   get(key) {
-    return this.mirror({ read: true, failOverSource: true }).get(key);
+    return this
+      .mirror({ read: true, failOverSource: true })
+      .get(key)
+      .catch((err) => {
+        if (err instanceof KeyNotFoundError) {
+          return this.source.get(key);
+        }
+
+        throw (err);
+      });
   }
 
   sync() {
