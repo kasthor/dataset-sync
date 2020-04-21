@@ -1,5 +1,6 @@
 const promisify = require('util.promisify'),
-  Item = require('./item');
+  Item = require('./item'),
+  KeyNotFoundError = require('./key_not_found_error');
 
 class RedisItem extends Item {
   constructor(options = {}) {
@@ -13,7 +14,15 @@ class RedisItem extends Item {
   }
 
   _get(key) {
-    return this.do('hget', key).then(JSON.parse);
+    return this.do('hget', key)
+      .then((item) => {
+        if (item == null) {
+          throw (new KeyNotFoundError());
+        }
+
+        return item;
+      })
+      .then(JSON.parse);
   }
 
   _keys() {
