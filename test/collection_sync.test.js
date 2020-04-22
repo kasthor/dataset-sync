@@ -87,8 +87,8 @@ describe('CollectionSync', () => {
     it('gets an existing value', () => {
       expect(subject.get('a')).resolves.toEqual(1);
     });
-    it('rejects when there is no value', () => {
-      expect(subject.get('z')).toReject();
+    it('resolves null if not found in mirror or source', () => {
+      expect(subject.get('z')).resolves.toBeNull();
     });
     it('returns value from source if not present in mirror', () => {
       expect(subject.get('c')).resolves.toEqual(1);
