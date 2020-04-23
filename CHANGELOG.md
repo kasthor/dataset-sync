@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/kasthor/dataset-sync/compare/v1.6.0...v1.7.0) (2020-04-23)
+
+
+### Bug Fixes
+
+* disabling reject reads ([583181c](https://github.com/kasthor/dataset-sync/commit/583181c))
+
+
+### Features
+
+* resolves to null if data not found ([6caa2b5](https://github.com/kasthor/dataset-sync/commit/6caa2b5))
+
+
+
 ## [1.6.0](https://github.com/kasthor/dataset-sync/compare/v1.5.0...v1.6.0) (2020-04-21)
 
 
