@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.3](https://github.com/kasthor/dataset-sync/compare/v1.10.2...v1.10.3) (2020-05-09)
+
+
+### Bug Fixes
+
+* params issue when skipping promisify ([8012397](https://github.com/kasthor/dataset-sync/commit/8012397))
+
+
+
 ### [1.10.2](https://github.com/kasthor/dataset-sync/compare/v1.10.1...v1.10.2) (2020-05-09)
 
 

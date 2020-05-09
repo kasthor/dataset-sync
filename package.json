@@ -1,6 +1,6 @@
 {
   "name": "dataset-sync",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "description": "keep object based objects in sync",
   "main": "index.js",
   "scripts": {
