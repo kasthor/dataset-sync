@@ -21,6 +21,7 @@ class RedisItem extends Item {
 
   _get(key) {
     return this.do('hget', key)
+      .catch(() => { throw new Error('Redis Client did err'); })
       .then(Item.notFoundErrorIfNull)
       .then(JSON.parse);
   }
