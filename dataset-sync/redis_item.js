@@ -12,7 +12,7 @@ class RedisItem extends Item {
   }
 
   do(func, ...args) {
-    if (promisify) {
+    if (this.promisify) {
       return promisify(this.client[func]).bind(this.client)(this.key, ...args);
     }
 
