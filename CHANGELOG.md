@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/kasthor/dataset-sync/compare/v1.8.2...v1.10.0) (2020-05-09)
+
+
+### Features
+
+* if redis client already supports promises skip promisify step ([43a2c46](https://github.com/kasthor/dataset-sync/commit/43a2c46))
+
+
+### Tests
+
+* passing ([32eb438](https://github.com/kasthor/dataset-sync/commit/32eb438))
+
+
+
 ## [1.9.0](https://github.com/kasthor/dataset-sync/compare/v1.8.2...v1.9.0) (2020-05-09)
 
 
