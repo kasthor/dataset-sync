@@ -2,11 +2,13 @@ const { promisify } = require('util'),
   Item = require('./item');
 
 class RedisItem extends Item {
-  constructor(options = { promisify: true }) {
-    super(options);
-    this.client = options.client;
-    this.key = options.collection;
-    this.promisify = options.promisify;
+  // eslint-disable-next-line no-shadow
+  constructor({ client = null, collection = null, promisify = true } = {}) {
+    // eslint-disable-next-line prefer-rest-params
+    super(...arguments);
+    this.client = client;
+    this.key = collection;
+    this.promisify = promisify;
   }
 
   do(func, ...args) {

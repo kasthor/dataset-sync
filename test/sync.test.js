@@ -27,16 +27,16 @@ describe('sync', () => {
       subject = new Sync({ source: {}, mirrors: { x: 1 }, collections: ['a'] });
     });
 
-    it('gets a value from mirror', () => {
-      expect(subject.get('a', 'x')).resolves.toBe(1);
+    it('gets a value from mirror', () => { // eslint-disable-line arrow-body-style
+      return expect(subject.get('a', 'x')).resolves.toBe(1);
     });
 
-    it('gets a value from mirror', () => {
-      expect(subject.get('a', 'x')).resolves.toBe(1);
+    it('gets a value from mirror', () => { // eslint-disable-line arrow-body-style
+      return expect(subject.get('a', 'x')).resolves.toBe(1);
     });
 
-    it('sends error if wrong collection is called', () => {
-      expect(subject.get('b', 'x')).toReject();
+    it('sends error if wrong collection is called', () => { // eslint-disable-line arrow-body-style
+      return expect(subject.get('b', 'x')).toReject();
     });
   });
 });
