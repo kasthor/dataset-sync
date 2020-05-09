@@ -60,16 +60,14 @@ class CollectionSync {
     return this
       .mirror({ read: true, failOverSource: true })
       .get(key)
-      .catch((err) => {
-        return this.source
-          .get(key)
-          .catch((err) => { // eslint-disable-line no-shadow
-            if (err instanceof KeyNotFoundError) {
-              return null;
-            }
-            throw (err);
-          });
-      });
+      .catch(() => this.source
+        .get(key)
+        .catch((err) => { // eslint-disable-line no-shadow
+          if (err instanceof KeyNotFoundError) {
+            return null;
+          }
+          throw (err);
+        }));
   }
 
   sync() {
