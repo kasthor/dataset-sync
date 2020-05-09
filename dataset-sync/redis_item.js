@@ -16,7 +16,7 @@ class RedisItem extends Item {
       return promisify(this.client[func]).bind(this.client)(this.key, ...args);
     }
 
-    return this.client[func].call(this.client, ...args);
+    return this.client[func].call(this.client, this.key, ...args);
   }
 
   _get(key) {
