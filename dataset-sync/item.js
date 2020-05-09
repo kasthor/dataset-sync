@@ -24,11 +24,12 @@ class Item {
     return item;
   }
 
-  constructor(options = {}) {
-    this.options = Object.assign({ client: {}, read: true, write: true }, options);
-    this.obj = this.options.client;
-    this.read = this.options.read;
-    this.write = this.options.write;
+  constructor(options = {
+    client: {}, read: true, write: true,
+  }) {
+    this.obj = options.client;
+    this.read = options.read;
+    this.write = options.write;
   }
 
   get(key) {

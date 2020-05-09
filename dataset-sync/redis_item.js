@@ -1,15 +1,20 @@
-const promisify = require('util.promisify'),
+const { promisify } = require('util'),
   Item = require('./item');
 
 class RedisItem extends Item {
-  constructor(options = {}) {
+  constructor(options = { promisify: true }) {
     super(options);
     this.client = options.client;
     this.key = options.collection;
+    this.promisify = options.promisify;
   }
 
   do(func, ...args) {
-    return promisify(this.client[func]).bind(this.client)(this.key, ...args);
+    if (promisify) {
+      return promisify(this.client[func]).bind(this.client)(this.key, ...args);
+    }
+
+    return this.client[func].call(this.client, ...args);
   }
 
   _get(key) {
