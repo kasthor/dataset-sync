@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.5](https://github.com/kasthor/dataset-sync/compare/v1.10.3...v1.10.5) (2020-05-09)
+
+
+### Bug Fixes
+
+* return source result if any exception ([3761ae9](https://github.com/kasthor/dataset-sync/commit/3761ae9))
+* styling ([ddf7606](https://github.com/kasthor/dataset-sync/commit/ddf7606))
+
+
+
 ### [1.10.4](https://github.com/kasthor/dataset-sync/compare/v1.10.3...v1.10.4) (2020-05-09)
 
 
