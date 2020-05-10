@@ -6,14 +6,14 @@ const CollectionSync = require('../dataset-sync/collection_sync.js'),
 describe('CollectionSync', () => {
   describe('constructor', () => {
     it('creates a new object', () => {
-      expect(new CollectionSync()).not.toBeNull();
+      expect(new CollectionSync({})).not.toBeNull();
     });
     it('sets the source', () => {
-      const subject = new CollectionSync({ a: 1 }, {});
+      const subject = new CollectionSync({ source: { a: 1 }, mirrors: [] });
       expect(subject.source).toBeTruthy();
     });
     it('sets the source', () => {
-      const subject = new CollectionSync({ a: 1 }, {});
+      const subject = new CollectionSync({ source: { a: 1 }, mirrors: [] });
       expect(subject.mirrors).toBeTruthy();
       expect(subject.mirrors).toBeInstanceOf(Array);
     });
@@ -76,13 +76,13 @@ describe('CollectionSync', () => {
   });
   describe('get', () => {
     let source,
-      mirror,
+      mirrors,
       subject;
 
     beforeEach(() => {
       source = new Item({ client: { a: 1, b: 1, c: 1 } });
-      mirror = new Item({ client: { a: 1, b: 2 } });
-      subject = new CollectionSync(source, mirror);
+      mirrors = [new Item({ client: { a: 1, b: 2 } })];
+      subject = new CollectionSync({ source, mirrors });
     });
     it('gets an existing value', () => {
       expect(subject.get('a')).resolves.toEqual(1);
@@ -96,8 +96,10 @@ describe('CollectionSync', () => {
   });
   describe('sync', () => {
     it('add to mirror the items that are in source but not in mirror', () => {
-      const subject = new CollectionSync(new Item({ client: { a: 1, b: 2 } }),
-        new Item({ client: { a: 1 } }));
+      const subject = new CollectionSync({
+        source: new Item({ client: { a: 1, b: 2 } }),
+        mirrors: [new Item({ client: { a: 1 } })],
+      });
 
       subject.sync().then(() => {
         expect(subject.mirrors[0].obj)
@@ -105,8 +107,10 @@ describe('CollectionSync', () => {
       });
     });
     it('removes from mirror the items that are not in source', () => {
-      const subject = new CollectionSync(new Item({ client: { a: 1 } }),
-        new Item({ client: { a: 1, b: 2 } }));
+      const subject = new CollectionSync({
+        source: new Item({ client: { a: 1 } }),
+        mirrors: [new Item({ client: { a: 1, b: 2 } })],
+      });
 
       subject.sync().then(() => {
         expect(subject.mirrors[0].obj)
@@ -114,8 +118,10 @@ describe('CollectionSync', () => {
       });
     });
     it('update items on mirror when they are different in source', () => {
-      const subject = new CollectionSync(new Item({ client: { a: 1, b: 1 } }),
-        new Item({ client: { a: 1, b: 2 } }));
+      const subject = new CollectionSync({
+        source: new Item({ client: { a: 1, b: 1 } }),
+        mirrors: [new Item({ client: { a: 1, b: 2 } })],
+      });
 
       subject.sync().then(() => {
         expect(subject.mirrors[0].obj)

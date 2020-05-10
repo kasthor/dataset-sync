@@ -5,12 +5,13 @@ class Sync {
   constructor(options = {}) {
     const
       collections = options.collections || [],
-      mirrorClients = Array.isArray(options.mirrors) ? options.mirrors : [options.mirrors];
+      mirrorClients = Array.isArray(options.mirrors) ? options.mirrors : [options.mirrors],
+      { logger } = options;
 
     this.items = Object.assign({}, ...collections.map((collection) => {
       const source = ItemFactory.create(options.source, collection),
         mirrors = mirrorClients.map(client => ItemFactory.create(client, collection));
-      return { [collection]: new CollectionSync(source, ...mirrors) };
+      return { [collection]: new CollectionSync({ source, mirrors, logger }) };
     }));
   }
 

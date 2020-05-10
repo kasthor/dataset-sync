@@ -32,9 +32,10 @@ class CollectionSync {
     return Object.keys(filter).reduce((res, key) => res || filter[key] === item[key], false);
   }
 
-  constructor(source, ...mirrors) {
+  constructor({ source, mirrors, logger = null }) {
     this.source = source;
     this.mirrors = mirrors;
+    this.logger = logger;
   }
 
   filteredMirrors(filter) {
@@ -60,7 +61,7 @@ class CollectionSync {
     return this
       .mirror({ read: true, failOverSource: true })
       .get(key)
-      .catch(() => this.source
+      .then(val => val, () => this.source
         .get(key)
         .catch((err) => { // eslint-disable-line no-shadow
           if (err instanceof KeyNotFoundError) {
