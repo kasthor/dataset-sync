@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/kasthor/dataset-sync/compare/v1.10.5...v1.11.0) (2020-05-10)
+
+
+### Bug Fixes
+
+* improving parameters in colletion sync ([8a47e83](https://github.com/kasthor/dataset-sync/commit/8a47e83))
+
+
+### Features
+
+* report when data is found in the source but not in the mirror ([6336707](https://github.com/kasthor/dataset-sync/commit/6336707))
+
+
+### Tests
+
+* report when data is found in the source but not in the mirror ([8359f59](https://github.com/kasthor/dataset-sync/commit/8359f59))
+
+
+
 ### [1.10.5](https://github.com/kasthor/dataset-sync/compare/v1.10.3...v1.10.5) (2020-05-09)
 
 
