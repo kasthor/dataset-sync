@@ -38,6 +38,12 @@ class CollectionSync {
     this.logger = logger;
   }
 
+  log(logObject) {
+    if (typeof this.logger === 'function') {
+      this.logger(logObject);
+    }
+  }
+
   filteredMirrors(filter) {
     return filter
       ? this.mirrors.filter(CollectionSync.filter.bind(null, filter))
@@ -63,6 +69,10 @@ class CollectionSync {
       .get(key)
       .then(val => val, () => this.source
         .get(key)
+        .then((value) => {
+          this.log({ code: 'mirror_miss_source_hit' });
+          return value;
+        })
         .catch((err) => { // eslint-disable-line no-shadow
           if (err instanceof KeyNotFoundError) {
             return null;
