@@ -1,4 +1,4 @@
-/* global beforeEach describe it expect */
+/* global jest beforeEach describe it expect */
 
 const CollectionSync = require('../dataset-sync/collection_sync.js'),
   Item = require('../dataset-sync/item.js');
@@ -84,14 +84,21 @@ describe('CollectionSync', () => {
       mirrors = [new Item({ client: { a: 1, b: 2 } })];
       subject = new CollectionSync({ source, mirrors });
     });
+
+    // eslint-disable-next-line arrow-body-style
     it('gets an existing value', () => {
-      expect(subject.get('a')).resolves.toEqual(1);
+      return expect(subject.get('a')).resolves.toEqual(1);
     });
+
+    // eslint-disable-next-line arrow-body-style
     it('resolves null if not found in mirror or source', () => {
-      expect(subject.get('z')).resolves.toBeNull();
+      return expect(subject.get('z')).resolves.toBeNull();
     });
-    it('returns value from source if not present in mirror', () => {
-      expect(subject.get('c')).resolves.toEqual(1);
+    it('returns value from source if not present in mirror', async () => {
+      const logger = jest.fn();
+      subject = new CollectionSync({ source, mirrors, logger });
+      await expect(subject.get('c')).resolves.toEqual(1);
+      expect(logger).toHaveBeenCalledWith({ code: 'mirror_miss_source_hit' });
     });
   });
   describe('sync', () => {
