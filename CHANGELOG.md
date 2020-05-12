@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/kasthor/dataset-sync/compare/v1.11.0...v1.12.0) (2020-05-12)
+
+
+### Features
+
+* ability to sync a collection, or an item within a collection ([abd6506](https://github.com/kasthor/dataset-sync/commit/abd6506))
+
+
+
 ## [1.11.0](https://github.com/kasthor/dataset-sync/compare/v1.10.5...v1.11.0) (2020-05-10)
 
 
