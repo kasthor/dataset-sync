@@ -55,7 +55,7 @@ describe('CollectionSync', () => {
       expect(CollectionSync.getUpdates(source, mirror)).resolves.toContain('b');
       expect(CollectionSync.getUpdates(source, mirror)).resolves.not.toContain('c');
     });
-    it('returns the key that is different', () => {
+    it('returns the key that is different', async () => {
       const source = new Item({ client: { a: 1, b: 1 } }),
         mirror = new Item({ client: { a: 1, b: 2, c: 3 } });
 
@@ -101,6 +101,41 @@ describe('CollectionSync', () => {
       expect(logger).toHaveBeenCalledWith({ code: 'mirror_miss_source_hit' });
     });
   });
+  describe.only('uodate', () => {
+    it('updates mirrored object', () => {
+      const subject = new CollectionSync({
+        source: new Item({ client: { a: 2 } }),
+        mirrors: [new Item({ client: { a: 1 } })],
+      });
+
+      return subject.update('a').then(() => {
+        expect(subject.mirrors[0].obj)
+          .toEqual(expect.objectContaining({ a: 2 }));
+      });
+    });
+    it('deletes key on mirrored object', () => {
+      const subject = new CollectionSync({
+        source: new Item({ client: {} }),
+        mirrors: [new Item({ client: { a: 1 } })],
+      });
+
+      return subject.update('a').then(() => {
+        expect(subject.mirrors[0].obj)
+          .toEqual(expect.objectContaining({}));
+      });
+    });
+    it('leaves any other key intact', () => {
+      const subject = new CollectionSync({
+        source: new Item({ client: { a: 2 } }),
+        mirrors: [new Item({ client: { a: 1, b: 1 } })],
+      });
+
+      return subject.update('a').then(() => {
+        expect(subject.mirrors[0].obj)
+          .toEqual(expect.objectContaining({ a: 2, b: 1 }));
+      });
+    });
+  });
   describe('sync', () => {
     it('add to mirror the items that are in source but not in mirror', () => {
       const subject = new CollectionSync({
@@ -108,7 +143,7 @@ describe('CollectionSync', () => {
         mirrors: [new Item({ client: { a: 1 } })],
       });
 
-      subject.sync().then(() => {
+      return subject.sync().then(() => {
         expect(subject.mirrors[0].obj)
           .toEqual(expect.objectContaining({ a: 1, b: 2 }));
       });
@@ -119,7 +154,7 @@ describe('CollectionSync', () => {
         mirrors: [new Item({ client: { a: 1, b: 2 } })],
       });
 
-      subject.sync().then(() => {
+      return subject.sync().then(() => {
         expect(subject.mirrors[0].obj)
           .toEqual(expect.objectContaining({ a: 1 }));
       });
@@ -130,7 +165,7 @@ describe('CollectionSync', () => {
         mirrors: [new Item({ client: { a: 1, b: 2 } })],
       });
 
-      subject.sync().then(() => {
+      return subject.sync().then(() => {
         expect(subject.mirrors[0].obj)
           .toEqual(expect.objectContaining({ b: 1 }));
       });

@@ -81,6 +81,25 @@ class CollectionSync {
         }));
   }
 
+  update(item) {
+    const { source } = this;
+
+    return Promise
+      .all(
+        this.filteredMirrors({ write: true })
+          .map(mirror => source
+            .get(item)
+            .then(mirror.set.bind(mirror, item))
+            .catch((err) => {
+              if (err instanceof KeyNotFoundError) {
+                return mirror.remove(item);
+              }
+
+              throw err;
+            })),
+      );
+  }
+
   sync() {
     return new Promise((resolve) => {
       const { source } = this;

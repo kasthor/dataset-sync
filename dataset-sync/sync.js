@@ -22,7 +22,18 @@ class Sync {
     return Promise.reject(new Error('collection not found'));
   }
 
-  sync() {
+  sync(collection, id) {
+    if (collection && collection in this.items) {
+      if (id) {
+        // If a collection and an ID is specified then update only that id
+        return this.items[collection].update(id);
+      }
+
+      // If a collection is specified but no ID, then update the collection
+      return this.items[collection].sync();
+    }
+
+    // If no collection or id is specified then sync all collections
     return Promise.all(Object.keys(this.items).map(k => this.items[k].sync()));
   }
 }
